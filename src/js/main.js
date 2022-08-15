@@ -18,6 +18,8 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
+renderer.setClearColor(0xfffaaa);
+
 const orbit = new OrbitControls(camera, renderer.domElement);
 
 camera.position.set(6, 6, 6);
@@ -29,19 +31,18 @@ scene.add(grid);
 const gltfLoader = new GLTFLoader();
 const rgbeLoder = new RGBELoader();
 
-renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 4;
+// renderer.outputEncoding = THREE.sRGBEncoding;
+// renderer.toneMapping = THREE.ACESFilmicToneMapping;
+// renderer.toneMappingExposure = 4;
 
 let car;
-rgbeLoder.load("./assets/MR_INT-003_Kitchen_Pierre.hdr", function (texture) {
-  debugger;
-  texture.mapping = THREE.EquirectangularReflectionMapping;
-  scene.environment = texture;
-});
+// rgbeLoder.load("./assets/MR_INT-003_Kitchen_Pierre.hdr", function (texture) {
+//   debugger;
+//   texture.mapping = THREE.EquirectangularReflectionMapping;
+//   scene.environment = texture;
+// });
 
-gltfLoader.load("../assets/myModel.glb", function (gltf) {
-  debugger;
+gltfLoader.load("./assets/scene.glb", function (gltf) {
   const model = gltf.scene;
   scene.add(model);
   car = model;
